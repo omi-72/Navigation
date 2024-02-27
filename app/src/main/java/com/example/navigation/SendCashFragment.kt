@@ -27,7 +27,13 @@ class SendCashFragment : Fragment(R.layout.fragment_send_cash){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       val receiverName =  args.receiverName
+        binding.etAmount.setText(SampleData.defaultAmount.value.toString())
+        SampleData.defaultAmount.observe(viewLifecycleOwner){
+            binding.etAmount.setText(it.toString())
+        }
+
+
+        val receiverName =  args.receiverName
 
 
         binding.tvReceiverName.text = "Send cash to $receiverName"
